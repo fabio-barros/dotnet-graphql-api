@@ -26,9 +26,9 @@ namespace CommanderGQL
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddDbContext<AppDbContext>(options => options.UseNpgsql(Configuration.GetConnectionString("NpgConnectionString")));
+            services.AddPooledDbContextFactory<AppDbContext>(options => options.UseNpgsql(Configuration.GetConnectionString("NpgConnectionString")));
 
-            services.AddGraphQLServer().AddQueryType<Query>();
+            services.AddGraphQLServer().AddQueryType<Query>().AddProjections();
 
         }
 
