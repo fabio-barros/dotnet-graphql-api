@@ -4,6 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using CommanderGQL.Db;
 using CommanderGQL.GraphQL;
+using CommanderGQL.GraphQL.Countries;
+using CommanderGQL.GraphQL.Directors;
+using CommanderGQL.GraphQL.Films;
+using CommanderGQL.GraphQL.Languages;
 using GraphQL.Server.Ui.Voyager;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -28,17 +32,21 @@ namespace CommanderGQL
             services.AddControllers();
             services.AddPooledDbContextFactory<AppDbContext>(options => options.UseNpgsql(Configuration.GetConnectionString("NpgConnectionString")));
 
-            services.AddGraphQLServer().AddQueryType<Query>().AddProjections();
+            services.AddGraphQLServer()
+            .AddQueryType<RootQuery>()
+            .AddType<DirectorType>()
+            .AddType<FilmType>()
+            .AddType<CountryType>()
+            .AddType<LanguageType>()
+            .AddProjections()
+            .AddFiltering()
+            .AddSorting();
 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
 
             app.UseRouting();
 
