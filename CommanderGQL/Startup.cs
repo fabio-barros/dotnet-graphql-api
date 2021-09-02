@@ -34,6 +34,7 @@ namespace CommanderGQL
 
             services.AddGraphQLServer()
             .AddQueryType<RootQuery>()
+            .AddMutationType<RootMutation>()
             .AddType<DirectorType>()
             .AddType<FilmType>()
             .AddType<CountryType>()

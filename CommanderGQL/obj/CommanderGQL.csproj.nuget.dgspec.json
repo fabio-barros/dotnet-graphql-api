@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\GitHub\\dotnet-graphql-api\\CommanderGQL\\CommanderGQL.csproj": {}
+    "F:\\GitHub\\dotnet-graphql-api\\commandergql\\CommanderGQL.csproj": {}
   },
   "projects": {
-    "F:\\GitHub\\dotnet-graphql-api\\CommanderGQL\\CommanderGQL.csproj": {
+    "F:\\GitHub\\dotnet-graphql-api\\commandergql\\CommanderGQL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\GitHub\\dotnet-graphql-api\\CommanderGQL\\CommanderGQL.csproj",
+        "projectUniqueName": "F:\\GitHub\\dotnet-graphql-api\\commandergql\\CommanderGQL.csproj",
         "projectName": "CommanderGQL",
-        "projectPath": "F:\\GitHub\\dotnet-graphql-api\\CommanderGQL\\CommanderGQL.csproj",
+        "projectPath": "F:\\GitHub\\dotnet-graphql-api\\commandergql\\CommanderGQL.csproj",
         "packagesPath": "C:\\Users\\fabio\\.nuget\\packages\\",
-        "outputPath": "F:\\GitHub\\dotnet-graphql-api\\CommanderGQL\\obj\\",
+        "outputPath": "F:\\GitHub\\dotnet-graphql-api\\commandergql\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\fabio\\AppData\\Roaming\\NuGet\\NuGet.Config"

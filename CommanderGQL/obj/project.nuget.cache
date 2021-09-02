@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0Ig1d8dfMk2D8T4Yi9IE7kNifWXPdVee9Px2U5A29XgMzEoqV8jK3/6kJ8/sJmPszufk9QeTO+FTfP818ZVHyg==",
+  "dgSpecHash": "1hcwsx5FeeBluYN0/11NmyKxsvV2Gwf9egw3csV+l+y8nWUnSEMxKz8hCAQEmuqbyQpmgHQ47q/oACacrnsNeA==",
   "success": true,
-  "projectFilePath": "F:\\GitHub\\dotnet-graphql-api\\CommanderGQL\\CommanderGQL.csproj",
+  "projectFilePath": "F:\\GitHub\\dotnet-graphql-api\\commandergql\\CommanderGQL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\fabio\\.nuget\\packages\\graphql.server.ui.voyager\\5.0.2\\graphql.server.ui.voyager.5.0.2.nupkg.sha512",
     "C:\\Users\\fabio\\.nuget\\packages\\greendonut\\11.3.5\\greendonut.11.3.5.nupkg.sha512",
