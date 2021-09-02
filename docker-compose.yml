@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+    movieapi:
+        container_name: movieapi
+        image: movieapi
+        environment:
+            - PORT=5000
+        ports:
+            - 5000:5000
+        build:
+            context: .
+            dockerfile: Dockerfile

@@ -1,11 +1,12 @@
-FROM mcr.microsoft.com/dotnet/core/aspnet:5.0 AS base
+FROM mcr.microsoft.com/dotnet/sdk:5.0 AS base
 WORKDIR /app
 
-FROM mcr.microsoft.com/dotnet/core/aspnet:5.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
 COPY ["CommanderGQL/CommanderGQL.csproj", "CommanderGQL/"]
-RUN dotnet restore "CommanderGQL.csproj"
-COPY . .
+RUN dotnet restore "CommanderGQL/CommanderGQL.csproj"
+COPY ./CommanderGQL ./CommanderGQL
+WORKDIR "/src/CommanderGQL"
 RUN dotnet build "CommanderGQL.csproj" -c Release -o /app/build
 
 FROM build as publish
@@ -14,4 +15,4 @@ RUN dotnet publish "CommanderGQL.csproj" -c Release -o /app/publish
 FROM base AS FINAL
 WORKDIR /app
 COPY --from=publish /app/publish .
-COPY ./CounterPage/build ./wwwroot
+ENTRYPOINT ["dotnet", "CommanderGQL.dll"]
