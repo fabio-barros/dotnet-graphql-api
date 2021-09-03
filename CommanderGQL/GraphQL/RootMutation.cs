@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using CommanderGQL.Db;
 using CommanderGQL.GraphQL.Directors;
@@ -6,13 +7,17 @@ using CommanderGQL.GraphQL.Films;
 using CommanderGQL.Models;
 using HotChocolate;
 using HotChocolate.Data;
+using HotChocolate.Subscriptions;
 
 namespace CommanderGQL.GraphQL
 {
     public class RootMutation
     {
         [UseDbContext(typeof(AppDbContext))]
-        public async Task<AddDirectorPayload> AddDirectorAsync(AddDirectorInput input, [ScopedService] AppDbContext context)
+        public async Task<AddDirectorPayload> AddDirectorAsync(
+            AddDirectorInput input, [ScopedService] AppDbContext context,
+            [Service] ITopicEventSender eventSender,
+            CancellationToken cancellationToken)
         {
             var director = new Director
             {
@@ -21,7 +26,9 @@ namespace CommanderGQL.GraphQL
             };
 
             context.Directors.Add(director);
-            await context.SaveChangesAsync();
+            await context.SaveChangesAsync(cancellationToken);
+
+            await eventSender.SendAsync(nameof(Subscription.OnDirectorAdded), director, cancellationToken);
 
             return new AddDirectorPayload(director);
 

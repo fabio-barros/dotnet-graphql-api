@@ -35,13 +35,15 @@ namespace CommanderGQL
             services.AddGraphQLServer()
             .AddQueryType<RootQuery>()
             .AddMutationType<RootMutation>()
+            .AddSubscriptionType<Subscription>()
             .AddType<DirectorType>()
             .AddType<FilmType>()
             .AddType<CountryType>()
             .AddType<LanguageType>()
             .AddProjections()
             .AddFiltering()
-            .AddSorting();
+            .AddSorting()
+            .AddInMemorySubscriptions();
 
         }
 
@@ -55,6 +57,8 @@ namespace CommanderGQL
             {
                 endpoints.MapGraphQL();
             });
+
+            app.UseWebSockets();
 
             app.UseGraphQLVoyager(new VoyagerOptions()
             {
